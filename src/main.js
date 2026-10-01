@@ -65,5 +65,11 @@ console.log(cardArray);
 const gridDisplay = document.getElementById("grid")
 
 function createBoard(){
-    
+    for (let i = 0; i < cardArray.length ; i++) {
+        const card = document.createElement("img")
+        card.setAttribute("src",blank)
+        card.setAttribute("data-id",i)
+        gridDisplay.appendChild(card)
+    }
 }
+createBoard()
