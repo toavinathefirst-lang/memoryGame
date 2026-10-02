@@ -1,49 +1,47 @@
-body {
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
-  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
-  color: #f1f5f9;
-  background: radial-gradient(circle at top, #312e81, #0f172a 70%);
+body{
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    color: #f1f5f9;
+    background: radial-gradient(circle at top, #312e81, #0f172a 70%);
 }
 
 #timer {
-  font-size: 1.4rem;
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-  padding: 6px 18px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(6px);
+    font-size: 1.4em;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    padding: 6px 18px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(6px);
 }
 
-#result {
-  font-size: 1.1rem;
-  min-height: 1.4em;
-  text-align: center;
+#result{
+    font-size: 1.1rem;
+    min-height: 1.4em;
+    text-align: center;
+}
+#grid{
+    display: grid;
+    grid-template-columns: repeat(4,100px);
+    grid-auto-rows: 100px;
+    gap: 14px;
+    padding: 20px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
 }
 
-#grid {
-  display: grid;
-  grid-template-columns: repeat(4, 100px);
-  grid-auto-rows: 100px;
-  gap: 14px;
-  padding: 20px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.06);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-}
-
-/* --- Carte --- */
-.card {
-  perspective: 600px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-  -webkit-tap-highlight-color: transparent;
+.card{
+    perspective: 600px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .card:hover {
@@ -53,16 +51,14 @@ body {
 .card:active {
   transform: scale(0.93);
 }
-
-.card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
+.card-inner{
+    position: relative;
+    width: 100px;
+    height: 100%;
   transform-style: preserve-3d;
-  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+   transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
 }
 
-/* Le flip : rotation de 180° autour de l'axe Y */
 .card.flipped .card-inner {
   transform: rotateY(180deg);
 }
@@ -83,16 +79,27 @@ body {
 .face.front {
   transform: rotateY(180deg);
 }
-
+ 
 /* --- Effets --- */
 .card.matched {
   cursor: default;
   pointer-events: none;
   animation: pop 0.5s ease;
 }
-
+ 
 .card.matched .face.front {
   box-shadow: 0 0 0 3px #4ade80, 0 0 22px #4ade80;
+}
+
+@keyframes pop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+ @keyframes pop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.15); }
+  100% { transform: scale(1); }
 }
 
 .card.wrong {
@@ -103,14 +110,9 @@ body {
   box-shadow: 0 0 0 3px #f87171, 0 0 18px #f87171;
 }
 
-@keyframes pop {
-  0%   { transform: scale(1); }
-  50%  { transform: scale(1.15); }
-  100% { transform: scale(1); }
-}
-
 @keyframes shake {
   0%, 100% { transform: translateX(0); }
   25%      { transform: translateX(-6px); }
   75%      { transform: translateX(6px); }
 }
+ 
